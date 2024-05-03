@@ -4,7 +4,27 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+alembic = "*"
+click = "*"
+flask-cors = "*"
+flask-login = "*"
+flask-migrate = "*"
+flask-sqlalchemy = "*"
+flask-wtf = "*"
 flask = "*"
+greenlet = "*"
+gunicorn = "*"
+itsdangerous = "*"
+jinja2 = "*"
+mako = "*"
+markupsafe = "*"
+python-dateutil = "*"
+python-dotenv = "*"
+python-editor = "*"
+six = "*"
+sqlalchemy = "*"
+werkzeug = "*"
+wtforms = "*"
 
 [dev-packages]
 
