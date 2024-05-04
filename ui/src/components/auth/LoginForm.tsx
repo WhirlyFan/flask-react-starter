@@ -1,30 +1,29 @@
-import { useLoginMutation } from 'app/apiSlice';
-import { ErrorType } from 'app/types';
-import { useState } from 'react';
-// import { useLocation, useNavigate } from 'react-router-dom';
-import { Form, Input, Button, Typography, Alert } from 'antd';
-import styles from './auth.module.less';
+import { useLoginMutation } from "app/apiSlice";
+import { ErrorType } from "app/types";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const { Title } = Typography;
-
-const LoginForm = () => {
+export default function LoginForm() {
+  const navigate = useNavigate();
   const [login] = useLoginMutation();
-  const [form] = Form.useForm();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  // const navigate = useNavigate();
-  // const path = useLocation().pathname;
 
-  const onFinish = async ({
-    email,
-    password
-  }: {
-    email: string;
-    password: string;
-  }) => {
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  const handleLogin = async () => {
     try {
       const user = await login({ email, password }).unwrap();
       console.log(user);
-      // path === '/login' ? navigate('/dashboard') : navigate(path);
+      setErrors([]);
+      navigate("/")
     } catch (e) {
       const error = e as ErrorType;
       setErrors(error.data.errors);
@@ -32,57 +31,36 @@ const LoginForm = () => {
   };
 
   return (
-    <div className={styles.layout}>
-      <Title level={4}>Login</Title>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleLogin();
+      }}
+    >
+      <h1>Login</h1>
       <div>
-        {errors?.map((error, ind) => (
-          <Alert key={ind} type="error" message={error} />
+        {errors?.map((error) => (
+          <div>{error}</div>
         ))}
       </div>
-      <Form
-        form={form}
-        onFinish={onFinish}
-        labelCol={{ span: 10 }}
-        wrapperCol={{ span: 18 }}
-      >
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[
-            { required: true, message: 'Please input your email!' },
-            { type: 'email', message: 'Invalid email format!' }
-          ]}
-        >
-          <Input placeholder="Email" />
-        </Form.Item>
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[
-            { required: true, message: 'Please input your password!' },
-            { min: 6, message: 'Password must be at least 6 characters long' }
-          ]}
-        >
-          <Input.Password placeholder="Password" />
-        </Form.Item>
-        <Form.Item wrapperCol={{ offset: 10, span: 18 }}>
-          <Button type="primary" htmlType="submit">
-            Login
-          </Button>
-        </Form.Item>
-        {/* <Form.Item wrapperCol={{ offset: 6, span: 18 }}>
-          <Button type="link" href="/forgot-password">
-            Forgot password?
-          </Button>
-        </Form.Item> */}
-        <Form.Item>
-          <Button type="link" href="/signup" >
-            Don't have an account? Sign up here!
-          </Button>
-        </Form.Item>
-      </Form>
-    </div>
+      <label htmlFor='email'>Email</label>
+      <input
+        type='email'
+        id='email'
+        name='email'
+        value={email}
+        onChange={handleEmailChange}
+      />
+      <label htmlFor='password'>Password</label>
+      <input
+        type='password'
+        id='password'
+        name='password'
+        value={password}
+        onChange={handlePasswordChange}
+      />
+      <button type='submit'>Login</button>
+      <button>Signup</button>
+    </form>
   );
-};
-
-export default LoginForm;
+}
