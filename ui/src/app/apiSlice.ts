@@ -15,7 +15,7 @@ export const apiSlice = createApi({
     // TODO: Add TS types for the response data (import from from a types.ts file)
     // TODO: Abstract the endpoints into their own file
     getUsers: builder.query({
-      // The URL for the request is '/api/users'
+      // Based off the reducer path set above, the URL for the request is '/api/users'
       query: () => '/users',
       providesTags: ['Users']
     }),
@@ -47,7 +47,8 @@ export const apiSlice = createApi({
         url: '/auth/logout',
         method: 'POST'
       }),
-      invalidatesTags: (result) => (result ? ['CurrentUser'] : [])
+      // Invalidate all tags that require a user to be logged in to view
+      invalidatesTags: (result) => (result ? ['CurrentUser', 'Users'] : [])
     })
   })
 });
