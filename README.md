@@ -103,7 +103,7 @@ one line:
 
 ```shell
 # build command - enter all in one line
-pnpm install --prefix ui && pnpm --prefix ui run build && pip install -r requirements.txt && pip install psycopg2 && flask db upgrade && flask seed all
+pnpm install --prefix ui && pnpm --prefix ui run build && pip install -r requirements.txt && pip install psycopg && flask db upgrade && flask seed all
 ```
 
 This script will install dependencies for the frontend, and run the build
