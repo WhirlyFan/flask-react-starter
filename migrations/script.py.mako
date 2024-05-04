@@ -8,7 +8,7 @@ Create Date: ${create_date}
 from alembic import op
 import sqlalchemy as sa
 import os
-environment = os.getenv("FLASK_ENV")
+is_production = not os.environ.get("FLASK_DEBUG")
 SCHEMA = os.environ.get("SCHEMA")
 ${imports if imports else ""}
 
@@ -23,7 +23,7 @@ def upgrade():
     # Remove this line of code after table_name has been added
     print("ADD APPLICABLE TABLE FOR MODIFIED SCHEMA FOR PRODUCTION!!")
     # table_name = ""
-    if environment == "production":
+    if is_production:
         op.execute(f"ALTER TABLE {table_name} SET SCHEMA {SCHEMA};")
 
 def downgrade():

@@ -5,7 +5,7 @@ from sqlalchemy import engine_from_config, pool
 from alembic import context
 import os
 
-environment = os.getenv("FLASK_ENV")
+is_production = not os.environ.get('FLASK_DEBUG')
 SCHEMA = os.environ.get("SCHEMA")
 
 
@@ -87,12 +87,12 @@ def run_migrations_online():
             **current_app.extensions['migrate'].configure_args
         )
         # Create a schema (only in production)
-        if environment == "production":
+        if is_production:
             connection.execute(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}")
 
         # Set search path to your schema (only in production)
         with context.begin_transaction():
-            if environment == "production":
+            if is_production:
                 context.execute(f"SET search_path TO {SCHEMA}")
             context.run_migrations()
 

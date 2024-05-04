@@ -34,6 +34,8 @@ Migrate(app, db)
 # Application Security
 CORS(app)
 
+is_production = not os.environ.get('FLASK_DEBUG')
+
 # Since we are deploying with Docker and Flask,
 # we won't be using a buildpack when we deploy to Heroku.
 # Therefore, we need to make sure that in production any
@@ -41,7 +43,7 @@ CORS(app)
 # Well.........
 @app.before_request
 def https_redirect():
-    if os.environ.get('FLASK_ENV') == 'production':
+    if is_production:
         if request.headers.get('X-Forwarded-Proto') == 'http':
             url = request.url.replace('http://', 'https://', 1)
             code = 301
@@ -53,9 +55,8 @@ def inject_csrf_token(response):
     response.set_cookie(
         'csrf_token',
         generate_csrf(),
-        secure=True if os.environ.get('FLASK_ENV') == 'production' else False,
-        samesite='Strict' if os.environ.get(
-            'FLASK_ENV') == 'production' else None,
+        secure=is_production,
+        samesite='Strict' if is_production else None,
         httponly=True)
     return response
 

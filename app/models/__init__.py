@@ -1,2 +1,2 @@
-from .db import db, environment, SCHEMA
+from .db import db, is_production, SCHEMA
 from .user import User
