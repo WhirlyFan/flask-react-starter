@@ -1,6 +1,6 @@
 # Flask React Starter
 
-This is the starter for the Flask React project.
+Starter template for a project utilizing Flask, Flask-Migrations, Flask-SQLAlchemy, Vite (React + Typescript), and Redux Toolkit Query with user authentication.
 
 ## Getting started
 1. Clone this repository (only this branch)
@@ -68,6 +68,7 @@ This is the starter for the Flask React project.
       pnpm run format
       ```
 
+## NOTE: When adding new migrations, you have to manually add code for production. Simply adding the names for the tables that are being modified/created. (instructions are pre-generated on the migration file)
 
 ## Deployment through Render.com
 
@@ -91,7 +92,7 @@ Start by giving your application a name.
 Leave the root directory field blank. By default, Render will run commands from
 the root directory.
 
-Make sure the Environment field is set set to "Python 3", the Region is set to
+Make sure the Environment field is set to "Python 3", the Region is set to
 the location closest to you, and the Branch is set to "main".
 
 Next, add your Build command. This is a script that should include everything
