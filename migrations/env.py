@@ -104,10 +104,12 @@ def run_migrations_online():
             target_metadata=get_metadata(),
             **conf_args
         )
-        
+
         # Create a schema (only in production)
         print(f"Creating schema {SCHEMA} if it doesn't exist")
+        print(f"Is production: {is_production}")
         if is_production:
+            print(f"if statement is true")
             connection.execute(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}")
 
         # Set search path to your schema (only in production)
