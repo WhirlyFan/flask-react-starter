@@ -1,3 +1,4 @@
+from sqlalchemy import text
 from app.models import db, User, is_production, SCHEMA
 
 
@@ -21,7 +22,7 @@ def seed_users():
 # it will reset the primary keys for you as well.
 def undo_users():
     if is_production:
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(text(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;"))
     else:
         db.session.execute("DELETE FROM users")
 
