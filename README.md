@@ -5,6 +5,11 @@ This has security protection via cors and csrf tokens. Comes production ready to
 
 ## Live Demo
 NOTE: This is using render's free tier so it may take a moment before loading in: https://flask-react-starter.onrender.com/
+Demo login:
+
+username: demo@test.com
+
+password: password
 
 ## Getting started
 NOTE: This is assuming you have [pipenv](https://pipenv.pypa.io/en/latest/installation.html), Python>=3.11, [pnpm](https://pnpm.io/installation), and Node>=16.19.1 installed
