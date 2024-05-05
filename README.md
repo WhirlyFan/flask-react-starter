@@ -137,7 +137,7 @@ need for the production environment.
 Add the following keys and values in the Render GUI form:
 
 - SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_DEBUG False
+- FLASK_DEBUG 0
 - FLASK_APP app
 - SCHEMA (your unique schema name, in snake_case)
 - VITE_APP_BASE_URL (use render.com url, located at top of page, similar to
