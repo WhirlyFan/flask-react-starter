@@ -21,7 +21,6 @@ const SignUpForm = () => {
       } catch (e) {
         const error = e as ErrorType;
         setErrors(error.data.errors);
-        console.log(error.data.errors);
       }
     } else {
       // @ts-expect-error ts(2322) FIXME: Type 'string' is not assignable to type 'never'.ts(2322

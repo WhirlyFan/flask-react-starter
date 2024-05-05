@@ -20,8 +20,7 @@ export default function LoginForm() {
 
   const handleLogin = async () => {
     try {
-      const user = await login({ email, password }).unwrap();
-      console.log(user);
+      await login({ email, password }).unwrap();
       setErrors([]);
       navigate("/")
     } catch (e) {
