@@ -1,6 +1,10 @@
-# Flask React Starter
+# Flask Vite (React) Starter
 
 Starter template for a project utilizing Flask, Flask-Migrations, Flask-SQLAlchemy, Vite (React + Typescript), and Redux Toolkit Query with user authentication.
+This has security protection via cors and csrf tokens. Comes production ready to allow you to host the application on render.com and utilize a PostgreSQL database (SQLite when developing locally). Utilizes SQLAlchemy v2 and Flask-SQLAlchemy v3
+
+## Live Demo
+NOTE: This is using render's free tier so it may take a moment before loading in: https://flask-react-starter.onrender.com/
 
 ## Getting started
 1. Clone this repository (only this branch)
