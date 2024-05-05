@@ -74,6 +74,30 @@ NOTE: This is assuming you have [pipenv](https://pipenv.pypa.io/en/latest/instal
       pnpm run format
       ```
 
+## Migrations
+
+Inside the pipenv shell (the python environment) you will need to make a new migration whenever a model is modified or created in the backend (app directory).
+
+```
+flask db migrate -m "message such as: create users table"
+```
+```
+flask db upgrade
+```
+To downgrade migrations you can run:
+```
+flask db downgrade
+```
+After your migrations are applied you can apply any seed files that you may have created with
+```
+flask seed all
+```
+To undo the seeds:
+```
+flask seed undo
+```
+NOTE: When creating new seed files, make sure to add the relevant code for production. (example can be found on the users seed file)
+
 ## NOTE: When adding new migrations, you have to manually add code for production. Simply adding the names for the tables that are being modified/created. (instructions are pre-generated on the migration file)
 
 ## Deployment through Render.com
