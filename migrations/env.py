@@ -4,6 +4,7 @@ import os
 from flask import current_app
 
 from alembic import context
+from sqlalchemy import text
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -107,12 +108,12 @@ def run_migrations_online():
 
         # Create a schema (only in production)
         if is_production:
-            connection.execute(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}")
+            connection.execute(text(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}"))
 
         # Set search path to your schema (only in production)
         with context.begin_transaction():
             if is_production:
-                context.execute(f"SET search_path TO {SCHEMA}")
+                context.execute(text(f"SET search_path TO {SCHEMA}"))
             context.run_migrations()
 
 

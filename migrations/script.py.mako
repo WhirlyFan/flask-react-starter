@@ -25,7 +25,7 @@ def upgrade():
     print("ADD APPLICABLE TABLE FOR MODIFIED SCHEMA FOR PRODUCTION!!")
     # table_name = ""
     if is_production:
-        op.execute(f"ALTER TABLE {table_name} SET SCHEMA {SCHEMA};")
+        op.execute(sa.text(f"ALTER TABLE {table_name} SET SCHEMA {SCHEMA};"))
 
 def downgrade():
     ${downgrades if downgrades else "pass"}
