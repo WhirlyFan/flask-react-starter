@@ -106,15 +106,11 @@ def run_migrations_online():
         )
 
         # Create a schema (only in production)
-        print(f"Creating schema {SCHEMA} if it doesn't exist")
-        print(f"Is production: {is_production}")
         if is_production:
-            print(f"Creating schema {SCHEMA}")
             connection.execute(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}")
 
         # Set search path to your schema (only in production)
         with context.begin_transaction():
-            print(f"Setting search path to {SCHEMA}")
             if is_production:
                 context.execute(f"SET search_path TO {SCHEMA}")
             context.run_migrations()
