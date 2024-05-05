@@ -1,7 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 
 import os
-is_production = not os.getenv("FLASK_DEBUG")
+is_production = os.environ.get('FLASK_DEBUG') == '0'
 SCHEMA = os.environ.get("SCHEMA")
 
 

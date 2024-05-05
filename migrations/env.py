@@ -14,6 +14,7 @@ config = context.config
 fileConfig(config.config_file_name)
 logger = logging.getLogger('alembic.env')
 
+is_production = os.environ.get('FLASK_DEBUG') == '0'
 SCHEMA = os.environ.get("SCHEMA")
 
 def get_engine():
@@ -105,14 +106,16 @@ def run_migrations_online():
         )
 
         # Create a schema (only in production)
-        if not os.environ.get('FLASK_DEBUG'):
-            print(f"Creating schema {SCHEMA} if it doesn't exist")
+        print(f"Creating schema {SCHEMA} if it doesn't exist")
+        print(f"Is production: {is_production}")
+        if is_production:
+            print(f"Creating schema {SCHEMA}")
             connection.execute(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}")
 
         # Set search path to your schema (only in production)
         with context.begin_transaction():
-            if not os.environ.get('FLASK_DEBUG'):
-                print(f"Setting search path to {SCHEMA}")
+            print(f"Setting search path to {SCHEMA}")
+            if is_production:
                 context.execute(f"SET search_path TO {SCHEMA}")
             context.run_migrations()
 
