@@ -103,7 +103,7 @@ one line:
 
 ```shell
 # build command - enter all in one line
-pnpm install --prefix ui && pnpm --prefix ui run build && pip install -r requirements.txt && pip install psycopg2 && flask db upgrade && flask seed all
+pnpm install --prefix ui && pnpm --prefix ui run build && pip install -r requirements.txt && pip install psycopg && flask db upgrade && flask seed all
 ```
 
 This script will install dependencies for the frontend, and run the build
@@ -137,7 +137,7 @@ need for the production environment.
 Add the following keys and values in the Render GUI form:
 
 - SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
+- FLASK_DEBUG False
 - FLASK_APP app
 - SCHEMA (your unique schema name, in snake_case)
 - VITE_APP_BASE_URL (use render.com url, located at top of page, similar to
