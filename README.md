@@ -36,6 +36,11 @@ NOTE: This is assuming you have [pipenv](https://pipenv.pypa.io/en/latest/instal
       ```
 
       Note: You can change the name of the environment when its created by changing the name in the environment.yml file
+      
+      Note: To update the environment.yml file for new packages you can install using pip and generate a new requirements.txt file with
+      ```
+      pip freeze > requirements.txt
+      ```
 
 3. Create a **.env** file based on the example with proper settings for your
    development environment (There are 2, 1 for backend (in project root folder) and one in /ui/)
