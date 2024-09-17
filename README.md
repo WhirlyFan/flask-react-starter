@@ -13,7 +13,7 @@ NOTE: This is using render's free tier so it may take a moment before loading in
 - password: password
 
 ## Getting started
-NOTE: This is assuming you have [pipenv](https://pipenv.pypa.io/en/latest/installation.html), Python>=3.11, [pnpm](https://pnpm.io/installation), and Node>=16.19.1 installed
+NOTE: This is assuming you have Node>=16.19.1 installed
 
 0. Make sure [miniconda](https://docs.anaconda.com/miniconda/miniconda-install/) is installed and the conda command is available
 
@@ -36,7 +36,7 @@ NOTE: This is assuming you have [pipenv](https://pipenv.pypa.io/en/latest/instal
       ```
 
       Note: You can change the name of the environment when its created by changing the name in the environment.yml file
-      
+
       Note: To update the environment.yml file for new packages you can install using pip and generate a new requirements.txt file with
       ```
       pip freeze > requirements.txt
