@@ -15,13 +15,27 @@ NOTE: This is using render's free tier so it may take a moment before loading in
 ## Getting started
 NOTE: This is assuming you have [pipenv](https://pipenv.pypa.io/en/latest/installation.html), Python>=3.11, [pnpm](https://pnpm.io/installation), and Node>=16.19.1 installed
 
+0. Make sure [miniconda](https://docs.anaconda.com/miniconda/miniconda-install/) is installed and the conda command is available
+
+      ```
+      conda --version
+      ```
+
 1. Clone this repository (only this branch)
 
-2. Install dependencies for backend
+      ```
+      git clone git@github.com:WhirlyFan/flask-react-starter.git
+      ```
+
+2. Create virtual environment for python and python dependencies
 
       ```bash
-      pipenv install -r requirements.txt
+      cd flask_react_starter
+      conda env create -f environment.yml
+      conda activate flask_react_starter
       ```
+
+      Note: You can change the name of the environment when its created by changing the name in the environment.yml file
 
 3. Create a **.env** file based on the example with proper settings for your
    development environment (There are 2, 1 for backend (in project root folder) and one in /ui/)
@@ -33,11 +47,7 @@ NOTE: This is assuming you have [pipenv](https://pipenv.pypa.io/en/latest/instal
    `SCHEMA` with a unique name, **making sure you use the snake_case
    convention**.
 
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
-
-   ```bash
-   pipenv shell
-   ```
+6. Migrate your database, seed your database, and run your Flask app
 
    ```bash
    flask db upgrade
