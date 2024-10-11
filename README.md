@@ -30,9 +30,9 @@ NOTE: This is assuming you have Node>=16.19.1 installed
 2. Create virtual environment for python and python dependencies
 
       ```bash
-      cd flask_react_starter
+      cd flask-react-starter
       conda env create -f environment.yml
-      conda activate flask_react_starter
+      conda activate flask-react-starter
       ```
 
       Note: You can change the name of the environment when its created by changing the name in the environment.yml file
