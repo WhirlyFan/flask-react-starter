@@ -97,7 +97,7 @@ NOTE: This is assuming you have Node>=16.19.1 installed
 
 ## Migrations
 
-Inside the pipenv shell (the python environment) you will need to make a new migration whenever a model is modified or created in the backend (app directory).
+Inside the conda environment you will need to make a new migration whenever a model is modified or created in the backend (app directory).
 
 ```
 flask db migrate -m "message such as: create users table"
